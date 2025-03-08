@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity
                 storage.append(buttonText);
             }
 
+
             text.setText(storage.toString());
         };
 
