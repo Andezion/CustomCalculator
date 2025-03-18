@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lab1</string>
+    <string name="button_c">C</string>
+    <string name="text">TextView</string>
 </resources>
