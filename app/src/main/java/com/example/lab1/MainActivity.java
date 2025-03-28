@@ -1,5 +1,6 @@
 package com.example.lab1;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity
 
         int[] buttonID = {R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
                 R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_0,
-                R.id.button_delenie, R.id.button_plus, R.id.button_minus, R.id.button_multiply};
+                R.id.button_delenie, R.id.button_plus, R.id.button_minus, R.id.button_multiply,
+                R.id.button_to_float};
 
         for(int id : buttonID)
         {
@@ -55,23 +58,31 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Button result_button = findViewById(R.id.button_result);
-        result_button.setOnClickListener(v ->
+        Button equalsButton = findViewById(R.id.button_result);
+        equalsButton.setOnClickListener(v ->
         {
             try
             {
                 double result = trimmer(inputText.toString());
 
                 inputText.setLength(0);
-                inputText.append(result);
+                if (result % 1 == 0)
+                {
+                    inputText.append((int) result);
+                }
+                else
+                {
+                    inputText.append(result);
+                }
 
                 update();
             }
             catch (Exception e)
             {
-                Toast.makeText(this, "Bruh, error", Toast.LENGTH_SHORT).show(); // stack
+                Toast.makeText(this, "Bruh, error", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private void update()
