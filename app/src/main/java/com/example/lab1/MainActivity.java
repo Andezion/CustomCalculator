@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity
             }
         };
 
-        int[] buttonID = {R.id.button13, R.id.button14, R.id.button15, R.id.button9, R.id.button10,
-                R.id.button11, R.id.button5, R.id.button6, R.id.button7, R.id.button18};
+        int[] buttonID = {R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
+                R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_0};
 
         for(int id : buttonID)
         {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
             button.setOnClickListener(buttonClick);
         }
 
-        Button deleteButton = findViewById(R.id.button1);
+        Button deleteButton = findViewById(R.id.button_delete);
         deleteButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
