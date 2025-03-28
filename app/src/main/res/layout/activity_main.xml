@@ -336,7 +336,7 @@
 
             android:background="@drawable/round_button_2"
 
-            android:text=","
+            android:text="."
             android:textSize="20sp"
 
             app:layout_constraintBottom_toBottomOf="parent"
