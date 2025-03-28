@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity
 
         int[] buttonID = {R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
                 R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_0,
-                R.id.button_delenie, R.id.button_plus, R.id.button_minus, R.id.button_multiply,
-                R.id.button_to_float};
+                R.id.button_delenie, R.id.button_plus, R.id.button_minus, R.id.button_multiply};
 
         for(int id : buttonID)
         {
@@ -46,18 +45,8 @@ public class MainActivity extends AppCompatActivity
             button.setOnClickListener(buttonClick);
         }
 
-        Button dotButton = findViewById(R.id.button_to_float);
-        dotButton.setOnClickListener(v ->
-        {
-            if (to_float())
-            {
-                inputText.append(".");
-                update();
-            }
-        });
-
-        Button deleteButton = findViewById(R.id.button_delete);
-        deleteButton.setOnClickListener(v ->
+        Button delete_button = findViewById(R.id.button_delete);
+        delete_button.setOnClickListener(v ->
         {
             if(inputText.length() > 0)
             {
@@ -66,8 +55,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Button equalsButton = findViewById(R.id.button_result);
-        equalsButton.setOnClickListener(v ->
+        Button result_button = findViewById(R.id.button_result);
+        result_button.setOnClickListener(v ->
         {
             try
             {
@@ -90,64 +79,61 @@ public class MainActivity extends AppCompatActivity
         textView.setText(inputText.toString());
     }
 
-    private boolean to_float()
-    {
-        int lastOperatorIndex = Math.max(
-                inputText.lastIndexOf("+"),
-                Math.max(inputText.lastIndexOf("-"),
-                        Math.max(inputText.lastIndexOf("*"), inputText.lastIndexOf("/"))));
-
-        String lastNumber = inputText.substring(lastOperatorIndex + 1);
-
-        return !lastNumber.contains(".");
-    }
-
     private List<String> to_string(String expression)
     {
-        Map<Character, Integer> precedence = new HashMap<>();
-
-        precedence.put('+', 1);
-        precedence.put('-', 1);
-        precedence.put('*', 2);
-        precedence.put('/', 2);
+        Map<Character, Integer> our_types = new HashMap<>();
+        our_types.put('+', 1);
+        our_types.put('-', 1);
+        our_types.put('*', 2);
+        our_types.put('÷', 2);
 
         List<String> output = new ArrayList<>();
-
         Deque<Character> operators = new ArrayDeque<>();
-        StringBuilder numberBuffer = new StringBuilder();
+        StringBuilder number_buffer = new StringBuilder();
+
+        boolean lastWasOperator = true;
 
         for (char c : expression.toCharArray())
         {
             if (Character.isDigit(c) || c == '.')
             {
-                numberBuffer.append(c);
+                number_buffer.append(c);
+                lastWasOperator = false;
             }
             else
             {
-                if (numberBuffer.length() > 0)
+                if (number_buffer.length() > 0)
                 {
-                    output.add(numberBuffer.toString());
-                    numberBuffer.setLength(0);
+                    output.add(number_buffer.toString());
+                    number_buffer.setLength(0);
                 }
-                else if (precedence.containsKey(c))
+
+                if (c == '-' && lastWasOperator)
                 {
-                    while (!operators.isEmpty() && precedence.get(operators.peek()) >= precedence.get(c))
+                    number_buffer.append(c);
+                }
+                else if (our_types.containsKey(c))
+                {
+                    while (!operators.isEmpty() &&
+                            our_types.getOrDefault(operators.peek(), 0)
+                                    >= our_types.get(c))
                     {
-                        output.add(operators.pop().toString());
+                        output.add(String.valueOf(operators.pop()));
                     }
                     operators.push(c);
+                    lastWasOperator = true;
                 }
             }
         }
 
-        if (numberBuffer.length() > 0)
+        if (number_buffer.length() > 0)
         {
-            output.add(numberBuffer.toString());
+            output.add(number_buffer.toString());
         }
 
         while (!operators.isEmpty())
         {
-            output.add(operators.pop().toString());
+            output.add(String.valueOf(operators.pop()));
         }
 
         return output;
@@ -165,6 +151,8 @@ public class MainActivity extends AppCompatActivity
             }
             else
             {
+                if (stack.size() < 2) throw new IllegalArgumentException("Invalid expression");
+
                 double b = stack.pop();
                 double a = stack.pop();
 
@@ -173,12 +161,21 @@ public class MainActivity extends AppCompatActivity
                     case "+": stack.push(a + b); break;
                     case "-": stack.push(a - b); break;
                     case "*": stack.push(a * b); break;
-                    case "/": stack.push(a / b); break;
+                    case "÷":
+                        if (b == 0)
+                        {
+                            Toast.makeText(this, "Division by zero", Toast.LENGTH_SHORT).show();
+                            return 0;
+                        }
+                        stack.push(a / b);
+                        break;
                 }
             }
         }
+
         return stack.pop();
     }
+
 
     private double trimmer(String expression)
     {
