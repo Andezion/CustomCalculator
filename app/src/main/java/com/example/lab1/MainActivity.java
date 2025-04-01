@@ -112,7 +112,38 @@ public class MainActivity extends AppCompatActivity
     private void update()
     {
         textView.setText(inputText.toString());
+        adjustTextSize();
     }
+
+    private void adjustTextSize()
+    {
+        float defaultSize = 70f;
+        float minSize = 20f;
+
+        int maxLength = 8;
+        int length = inputText.length();
+
+        if (length > maxLength)
+        {
+            float newSize = defaultSize - (length - maxLength) * 2;
+            if (newSize < minSize)
+            {
+                newSize = minSize;
+                textView.setSingleLine(false);
+            }
+            else
+            {
+                textView.setSingleLine(true);
+            }
+            textView.setTextSize(newSize);
+        }
+        else
+        {
+            textView.setTextSize(defaultSize);
+            textView.setSingleLine(true);
+        }
+    }
+
 
     private List<String> to_string(String expression)
     {
