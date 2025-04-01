@@ -40,13 +40,37 @@ public class MainActivity extends AppCompatActivity
         int[] buttonID = {R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
                 R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_0,
                 R.id.button_delenie, R.id.button_plus, R.id.button_minus, R.id.button_multiply,
-                R.id.button_to_float};
+                R.id.button_to_float, R.id.button_procent};
 
         for(int id : buttonID)
         {
             Button button = findViewById(id);
             button.setOnClickListener(buttonClick);
         }
+
+        Button button_znak = findViewById(R.id.button_znak);
+        button_znak.setOnClickListener(v ->
+        {
+            if (inputText.length() == 0) return;
+
+            int lastOperatorIndex = Math.max(
+                    inputText.lastIndexOf("+"),
+                    Math.max(inputText.lastIndexOf("-"),
+                            Math.max(inputText.lastIndexOf("*"), inputText.lastIndexOf("/"))));
+
+            int startIndex = lastOperatorIndex + 1;
+
+            if (inputText.charAt(startIndex) == '-')
+            {
+                inputText.deleteCharAt(startIndex);
+            }
+            else
+            {
+                inputText.insert(startIndex, "-");
+            }
+
+            update();
+        });
 
         Button delete_button = findViewById(R.id.button_delete);
         delete_button.setOnClickListener(v ->
@@ -97,6 +121,7 @@ public class MainActivity extends AppCompatActivity
         our_types.put('-', 1);
         our_types.put('*', 2);
         our_types.put('÷', 2);
+        our_types.put('%', 3);
 
         List<String> output = new ArrayList<>();
         Deque<Character> operators = new ArrayDeque<>();
@@ -169,6 +194,14 @@ public class MainActivity extends AppCompatActivity
 
                 switch (token)
                 {
+                    case "%":
+                        if (b == 0)
+                        {
+                            Toast.makeText(this, "% by zero", Toast.LENGTH_SHORT).show();
+                            return 0;
+                        }
+                        stack.push(a % b);
+                        break;
                     case "+": stack.push(a + b); break;
                     case "-": stack.push(a - b); break;
                     case "*": stack.push(a * b); break;
