@@ -366,12 +366,12 @@
     <TextView
         android:id="@+id/textView2"
 
-        android:layout_width="335dp"
-        android:layout_height="102dp"
+        android:layout_width="344dp"
+        android:layout_height="218dp"
 
-        android:background="#4D4B4B"
+        android:background="#000000"
         android:text=""
-        android:textColor="@color/black"
+        android:textColor="@color/white"
 
         android:textSize="70sp"
 
@@ -379,9 +379,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

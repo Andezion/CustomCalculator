@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
 
         if (length > maxLength)
         {
-            float newSize = defaultSize - (length - maxLength) * 2;
+            float newSize = defaultSize - (length - maxLength) * 5;
             if (newSize < minSize)
             {
                 newSize = minSize;
