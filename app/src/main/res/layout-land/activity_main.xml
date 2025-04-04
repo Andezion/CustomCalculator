@@ -11,6 +11,105 @@
 
     tools:context=".MainActivity" >
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="675dp"
+        android:layout_height="193dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.5"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="32dp">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_delete"
+
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="10dp"
+
+            android:background="@drawable/round_button_2"
+
+            android:text="⌫"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toTopOf="@id/button_7"
+            app:layout_constraintEnd_toStartOf="@id/button_znak"
+
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_znak"
+            android:layout_width="55dp"
+
+            android:layout_height="55dp"
+            android:layout_marginBottom="10dp"
+
+            android:background="@drawable/round_button_2"
+
+            android:text="±"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toTopOf="@id/button_8"
+            app:layout_constraintEnd_toStartOf="@id/button_procent"
+
+            app:layout_constraintStart_toEndOf="@id/button_delete" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_procent"
+            android:layout_width="55dp"
+
+            android:layout_height="55dp"
+            android:layout_marginBottom="10dp"
+
+            android:background="@drawable/round_button_2"
+
+            android:text="%"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toTopOf="@id/button_9"
+            app:layout_constraintEnd_toStartOf="@id/button_delenie"
+
+            app:layout_constraintStart_toEndOf="@id/button_znak" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_mode"
+            android:layout_width="55dp"
+
+            android:layout_height="55dp"
+            android:layout_marginStart="164dp"
+
+            android:layout_marginBottom="136dp"
+
+            android:background="@drawable/round_button_2"
+            android:text="⛭"
+
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toStartOf="@id/button_0"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+
+        android:layout_width="643dp"
+        android:layout_height="135dp"
+
+        android:layout_marginTop="28dp"
+        android:background="#000000"
+        android:text=""
+
+        android:textColor="@color/white"
+
+        android:textSize="70sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

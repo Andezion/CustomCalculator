@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity
     private void update()
     {
         textView.setText(inputText.toString());
-        adjustTextSize();
+        change_text();
     }
 
-    private void adjustTextSize()
+    private void change_text()
     {
         float defaultSize = 70f;
         float minSize = 20f;
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity
             }
             else
             {
-                if (stack.size() < 2) throw new IllegalArgumentException("Invalid expression");
+                if (stack.size() < 2) throw new IllegalArgumentException("r u dumb");
 
                 double b = stack.pop();
                 double a = stack.pop();
