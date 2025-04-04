@@ -1,6 +1,5 @@
 package com.example.lab1;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,12 +14,11 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity
 {
     private TextView textView;
-    private StringBuilder inputText = new StringBuilder();
+    private final StringBuilder inputText = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -252,9 +250,9 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private double trimmer(String expression)
+    private double trimmer(String primer)
     {
-        List<String> postfix = to_string(expression.replaceAll("\\s+", ""));
+        List<String> postfix = to_string(primer.replaceAll("\\s+", ""));
         return do_math(postfix);
     }
 }
