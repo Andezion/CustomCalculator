@@ -13,90 +13,483 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="675dp"
-        android:layout_height="193dp"
+        android:layout_width="862dp"
+        android:layout_height="236dp"
         android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.5"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="32dp">
+        tools:layout_editor_absoluteX="26dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_delete"
+            android:id="@+id/button_8"
 
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="90dp"
 
-            android:background="@drawable/round_button_2"
+            android:layout_height="50dp"
 
-            android:text="⌫"
+            android:background="@drawable/cool_button"
+
+            android:text="8"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="557dp"
+            tools:layout_editor_absoluteY="11dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_9"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="9"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="664dp"
+            tools:layout_editor_absoluteY="11dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_delenie"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="÷"
             android:textSize="20sp"
 
-            app:layout_constraintBottom_toTopOf="@id/button_7"
-            app:layout_constraintEnd_toStartOf="@id/button_znak"
+            tools:layout_editor_absoluteX="763dp"
+            tools:layout_editor_absoluteY="11dp" />
 
-            app:layout_constraintStart_toStartOf="parent" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_7"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="7"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="462dp"
+            tools:layout_editor_absoluteY="11dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_znak"
-            android:layout_width="55dp"
+            android:layout_width="90dp"
 
-            android:layout_height="55dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="50dp"
 
-            android:background="@drawable/round_button_2"
+            android:background="@drawable/cool_button"
 
             android:text="±"
             android:textSize="20sp"
 
-            app:layout_constraintBottom_toTopOf="@id/button_8"
-            app:layout_constraintEnd_toStartOf="@id/button_procent"
+            tools:layout_editor_absoluteX="359dp"
+            tools:layout_editor_absoluteY="11dp" />
 
-            app:layout_constraintStart_toEndOf="@id/button_delete" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_sin"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="sin"
+            android:textSize="18sp"
+
+            tools:layout_editor_absoluteX="258dp"
+            tools:layout_editor_absoluteY="11dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_log"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="log"
+            android:textSize="18sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/button_ln"
+            app:layout_constraintEnd_toStartOf="@+id/button_sin"
+            app:layout_constraintStart_toStartOf=""
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_delete"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="⌫"
+            android:textSize="20sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/button_fact"
+            app:layout_constraintEnd_toStartOf="@+id/button_log"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_fact"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="!"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="67dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/button_sqrt"
+            app:layout_constraintEnd_toStartOf="@+id/button_ln"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_delete"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_ln"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="ln"
+            android:textSize="18sp"
+
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="70dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_cos"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="cos"
+            android:textSize="18sp"
+
+            tools:layout_editor_absoluteX="258dp"
+            tools:layout_editor_absoluteY="70dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_procent"
-            android:layout_width="55dp"
+            android:layout_width="90dp"
 
-            android:layout_height="55dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="50dp"
 
-            android:background="@drawable/round_button_2"
+            android:background="@drawable/cool_button"
 
             android:text="%"
             android:textSize="20sp"
 
-            app:layout_constraintBottom_toTopOf="@id/button_9"
-            app:layout_constraintEnd_toStartOf="@id/button_delenie"
+            tools:layout_editor_absoluteX="359dp"
+            tools:layout_editor_absoluteY="67dp" />
 
-            app:layout_constraintStart_toEndOf="@id/button_znak" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_tan"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="tan"
+            android:textSize="18sp"
+
+            tools:layout_editor_absoluteX="258dp"
+            tools:layout_editor_absoluteY="120dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_ctg"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="ctg"
+            android:textSize="18sp"
+
+            tools:layout_editor_absoluteX="258dp"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_begin"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="("
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="359dp"
+            tools:layout_editor_absoluteY="120dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_end"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text=")"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="359dp"
+            tools:layout_editor_absoluteY="181dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_4"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="4"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="462dp"
+            tools:layout_editor_absoluteY="70dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_1"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="1"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="462dp"
+            tools:layout_editor_absoluteY="120dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/a22"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="9"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="462dp"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_2"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="2"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="557dp"
+            tools:layout_editor_absoluteY="120dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_0"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="0"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="557dp"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_6"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="6"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="673dp"
+            tools:layout_editor_absoluteY="70dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_3"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="3"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="673dp"
+            tools:layout_editor_absoluteY="120dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_multiply"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="*"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="763dp"
+            tools:layout_editor_absoluteY="70dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/a29"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="9"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="673dp"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_minus"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="-"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="763dp"
+            tools:layout_editor_absoluteY="120dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_plus"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="+"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="763dp"
+            tools:layout_editor_absoluteY="170dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_5"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="5"
+            android:textSize="20sp"
+
+            tools:layout_editor_absoluteX="557dp"
+            tools:layout_editor_absoluteY="70dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_sqrt"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="⎷"
+            android:textSize="25sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/button_mode"
+            app:layout_constraintEnd_toStartOf="@+id/button_e"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_fact"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_e"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="e"
+            android:textSize="18sp"
+
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="120dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_mode"
-            android:layout_width="55dp"
+            android:layout_width="90dp"
 
-            android:layout_height="55dp"
-            android:layout_marginStart="164dp"
+            android:layout_height="50dp"
 
-            android:layout_marginBottom="136dp"
+            android:background="@drawable/cool_button"
 
-            android:background="@drawable/round_button_2"
             android:text="⛭"
+            android:textSize="20sp"
 
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_pi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_sqrt"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-            app:layout_constraintEnd_toStartOf="@id/button_0"
-            app:layout_constraintStart_toStartOf="parent" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_pi"
+            android:layout_width="90dp"
+
+            android:layout_height="50dp"
+
+            android:background="@drawable/cool_button"
+
+            android:text="𝛑"
+            android:textSize="25sp"
+
+            tools:layout_editor_absoluteX="151dp"
+            tools:layout_editor_absoluteY="181dp" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/textView2"
 
-        android:layout_width="643dp"
-        android:layout_height="135dp"
+        android:layout_width="815dp"
+        android:layout_height="91dp"
 
         android:layout_marginTop="28dp"
         android:background="#000000"
