@@ -142,7 +142,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-
     private List<String> to_string(String expression)
     {
         Map<Character, Integer> our_types = new HashMap<>();
@@ -248,7 +247,6 @@ public class MainActivity extends AppCompatActivity
 
         return stack.pop();
     }
-
 
     private double trimmer(String primer)
     {

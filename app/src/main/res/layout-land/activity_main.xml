@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:id="@+id/main_hor"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
@@ -13,23 +13,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="870dp"
-        android:layout_height="240dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="750dp"
+        android:layout_height="219dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.5"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="54dp">
+        tools:layout_editor_absoluteX="81dp">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_8"
 
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="8"
             android:textSize="20sp"
@@ -37,15 +37,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_5"
             app:layout_constraintEnd_toStartOf="@+id/button_9"
             app:layout_constraintStart_toEndOf="@+id/button_7"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_9"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="9"
             android:textSize="20sp"
@@ -55,16 +56,15 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_8"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="664dp"
-            tools:layout_editor_absoluteY="11dp" />
+            tools:ignore="TouchTargetSize,TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_delenie"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button2"
 
             android:text="÷"
             android:textSize="20sp"
@@ -72,15 +72,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_multiply"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_9"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSize,TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_7"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="7"
             android:textSize="20sp"
@@ -88,13 +89,14 @@
             app:layout_constraintBottom_toTopOf="@+id/button_4"
             app:layout_constraintEnd_toStartOf="@+id/button_8"
             app:layout_constraintStart_toEndOf="@+id/button_znak"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSize,TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_znak"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
             android:background="@drawable/cool_button"
 
@@ -104,15 +106,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_procent"
             app:layout_constraintEnd_toStartOf="@+id/button_7"
             app:layout_constraintStart_toEndOf="@+id/button_sin"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSize,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_sin"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="sin"
             android:textSize="18sp"
@@ -122,16 +125,15 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_log"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="258dp"
-            tools:layout_editor_absoluteY="11dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_log"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="log"
             android:textSize="18sp"
@@ -139,13 +141,14 @@
             app:layout_constraintBottom_toTopOf="@+id/button_ln"
             app:layout_constraintEnd_toStartOf="@+id/button_sin"
             app:layout_constraintStart_toEndOf="@+id/button_delete"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_delete"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
             android:background="@drawable/cool_button"
 
@@ -155,15 +158,15 @@
             app:layout_constraintBottom_toTopOf="@+id/button_fact"
             app:layout_constraintEnd_toStartOf="@+id/button_log"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_fact"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
 
-            android:layout_height="50dp"
-
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="!"
             android:textSize="20sp"
@@ -173,16 +176,15 @@
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_delete"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="67dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_ln"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="ln"
             android:textSize="18sp"
@@ -192,16 +194,15 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_fact"
             app:layout_constraintTop_toBottomOf="@+id/button_log"
-            tools:layout_editor_absoluteX="151dp"
-            tools:layout_editor_absoluteY="70dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_cos"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="cos"
             android:textSize="18sp"
@@ -211,14 +212,13 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_ln"
             app:layout_constraintTop_toBottomOf="@+id/button_sin"
-            tools:layout_editor_absoluteX="258dp"
-            tools:layout_editor_absoluteY="70dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_procent"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
             android:background="@drawable/cool_button"
 
@@ -228,15 +228,17 @@
             app:layout_constraintBottom_toTopOf="@+id/button_begin"
             app:layout_constraintEnd_toStartOf="@+id/button_4"
             app:layout_constraintStart_toEndOf="@+id/button_cos"
-            app:layout_constraintTop_toBottomOf="@+id/button_znak" />
+            app:layout_constraintTop_toBottomOf="@+id/button_znak"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
+
             android:id="@+id/button_tan"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="tan"
             android:textSize="18sp"
@@ -246,16 +248,15 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_e"
             app:layout_constraintTop_toBottomOf="@+id/button_cos"
-            tools:layout_editor_absoluteX="258dp"
-            tools:layout_editor_absoluteY="120dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_ctg"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="ctg"
             android:textSize="18sp"
@@ -263,13 +264,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_end"
             app:layout_constraintStart_toEndOf="@+id/button_pi"
-            app:layout_constraintTop_toBottomOf="@+id/button_tan" />
+            app:layout_constraintTop_toBottomOf="@+id/button_tan"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_begin"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
             android:background="@drawable/cool_button"
 
@@ -281,14 +283,13 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_tan"
             app:layout_constraintTop_toBottomOf="@+id/button_procent"
-            tools:layout_editor_absoluteX="359dp"
-            tools:layout_editor_absoluteY="120dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_end"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
             android:background="@drawable/cool_button"
 
@@ -300,16 +301,15 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_ctg"
             app:layout_constraintTop_toBottomOf="@+id/button_begin"
-            tools:layout_editor_absoluteX="359dp"
-            tools:layout_editor_absoluteY="181dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_4"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="4"
             android:textSize="20sp"
@@ -319,16 +319,15 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_procent"
             app:layout_constraintTop_toBottomOf="@+id/button_7"
-            tools:layout_editor_absoluteX="462dp"
-            tools:layout_editor_absoluteY="70dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_1"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="1"
             android:textSize="20sp"
@@ -338,14 +337,13 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_begin"
             app:layout_constraintTop_toBottomOf="@+id/button_4"
-            tools:layout_editor_absoluteX="462dp"
-            tools:layout_editor_absoluteY="120dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_to_float"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
             android:background="@drawable/cool_button"
 
@@ -355,15 +353,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_0"
             app:layout_constraintStart_toEndOf="@+id/button_end"
-            app:layout_constraintTop_toBottomOf="@+id/button_1" />
+            app:layout_constraintTop_toBottomOf="@+id/button_1"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_2"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="2"
             android:textSize="20sp"
@@ -371,15 +370,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_0"
             app:layout_constraintEnd_toStartOf="@+id/button_3"
             app:layout_constraintStart_toEndOf="@+id/button_1"
-            app:layout_constraintTop_toBottomOf="@+id/button_5" />
+            app:layout_constraintTop_toBottomOf="@+id/button_5"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_0"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="0"
             android:textSize="20sp"
@@ -388,16 +388,15 @@
             app:layout_constraintEnd_toStartOf="@+id/button_result"
             app:layout_constraintStart_toEndOf="@+id/button_to_float"
             app:layout_constraintTop_toBottomOf="@+id/button_2"
-            tools:layout_editor_absoluteX="557dp"
-            tools:layout_editor_absoluteY="170dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_6"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="6"
             android:textSize="20sp"
@@ -405,15 +404,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_3"
             app:layout_constraintEnd_toStartOf="@+id/button_multiply"
             app:layout_constraintStart_toEndOf="@+id/button_5"
-            app:layout_constraintTop_toBottomOf="@+id/button_9" />
+            app:layout_constraintTop_toBottomOf="@+id/button_9"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_3"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="3"
             android:textSize="20sp"
@@ -421,15 +421,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_result"
             app:layout_constraintEnd_toStartOf="@+id/button_minus"
             app:layout_constraintStart_toEndOf="@+id/button_2"
-            app:layout_constraintTop_toBottomOf="@+id/button_6" />
+            app:layout_constraintTop_toBottomOf="@+id/button_6"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_multiply"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button2"
 
             android:text="*"
             android:textSize="20sp"
@@ -437,15 +438,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_minus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_6"
-            app:layout_constraintTop_toBottomOf="@+id/button_delenie" />
+            app:layout_constraintTop_toBottomOf="@+id/button_delenie"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_result"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button2"
 
             android:text="="
             android:textSize="20sp"
@@ -453,15 +455,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_plus"
             app:layout_constraintStart_toEndOf="@+id/button_0"
-            app:layout_constraintTop_toBottomOf="@+id/button_3" />
+            app:layout_constraintTop_toBottomOf="@+id/button_3"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_minus"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button2"
 
             android:text="-"
             android:textSize="20sp"
@@ -469,15 +472,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_plus"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_3"
-            app:layout_constraintTop_toBottomOf="@+id/button_multiply" />
+            app:layout_constraintTop_toBottomOf="@+id/button_multiply"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_plus"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button2"
 
             android:text="+"
             android:textSize="20sp"
@@ -485,15 +489,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_result"
-            app:layout_constraintTop_toBottomOf="@+id/button_minus" />
+            app:layout_constraintTop_toBottomOf="@+id/button_minus"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_5"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="5"
             android:textSize="20sp"
@@ -501,15 +506,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_2"
             app:layout_constraintEnd_toStartOf="@+id/button_6"
             app:layout_constraintStart_toEndOf="@+id/button_4"
-            app:layout_constraintTop_toBottomOf="@+id/button_8" />
+            app:layout_constraintTop_toBottomOf="@+id/button_8"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_sqrt"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="⎷"
             android:textSize="25sp"
@@ -517,15 +523,16 @@
             app:layout_constraintBottom_toTopOf="@+id/button_mode"
             app:layout_constraintEnd_toStartOf="@+id/button_e"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_fact" />
+            app:layout_constraintTop_toBottomOf="@+id/button_fact"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_e"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="e"
             android:textSize="18sp"
@@ -535,14 +542,13 @@
 
             app:layout_constraintStart_toEndOf="@+id/button_sqrt"
             app:layout_constraintTop_toBottomOf="@+id/button_ln"
-            tools:layout_editor_absoluteX="151dp"
-            tools:layout_editor_absoluteY="120dp" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_mode"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
             android:background="@drawable/cool_button"
 
@@ -552,15 +558,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_pi"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_sqrt" />
+            app:layout_constraintTop_toBottomOf="@+id/button_sqrt"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_pi"
-            android:layout_width="90dp"
+            android:layout_width="80dp"
 
-            android:layout_height="50dp"
+            android:layout_height="40dp"
 
-            android:background="@drawable/cool_button"
+            android:background="@drawable/cool_button1"
 
             android:text="𝛑"
             android:textSize="25sp"
@@ -568,7 +575,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_ctg"
             app:layout_constraintStart_toEndOf="@+id/button_mode"
-            app:layout_constraintTop_toBottomOf="@+id/button_e" />
+            app:layout_constraintTop_toBottomOf="@+id/button_e"
+            tools:ignore="TouchTargetSizeCheck" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -576,8 +584,8 @@
     <TextView
         android:id="@+id/textView2"
 
-        android:layout_width="870dp"
-        android:layout_height="120dp"
+        android:layout_width="750dp"
+        android:layout_height="110dp"
 
         android:layout_marginTop="28dp"
         android:background="#000000"
@@ -591,6 +599,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.315" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
