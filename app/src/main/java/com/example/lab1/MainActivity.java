@@ -1,5 +1,7 @@
 package com.example.lab1;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +38,27 @@ public class MainActivity extends AppCompatActivity
             update();
         };
 
+        int current = getResources().getConfiguration().orientation;
+        if (current == Configuration.ORIENTATION_LANDSCAPE)
+        {
+            int[] functionButtonsID = {
+                    R.id.button_sin, R.id.button_cos, R.id.button_tan, R.id.button_ctg,
+                    R.id.button_log, R.id.button_ln, R.id.button_pi, R.id.button_e,
+                    R.id.button_fact, R.id.button_sqrt, R.id.button_begin, R.id.button_end
+            };
+
+            for (int id : functionButtonsID)
+            {
+                Button button = findViewById(id);
+                button.setOnClickListener(v ->
+                {
+                    Button clickedButton = (Button) v;
+                    inputText.append(clickedButton.getText().toString());
+                    update();
+                });
+            }
+        }
+
         int[] buttonID = {R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
                 R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_0,
                 R.id.button_delenie, R.id.button_plus, R.id.button_minus, R.id.button_multiply,
@@ -51,7 +74,10 @@ public class MainActivity extends AppCompatActivity
         Button button_znak = findViewById(R.id.button_znak);
         button_znak.setOnClickListener(v ->
         {
-            if (inputText.length() == 0) return;
+            if (inputText.length() == 0)
+            {
+                return;
+            }
 
             int lastOperatorIndex = Math.max(
                     inputText.lastIndexOf("+"),
@@ -82,6 +108,21 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        Button changer = findViewById(R.id.button_mode);
+        changer.setOnClickListener(v ->
+        {
+            int currentOrientation = getResources().getConfiguration().orientation;
+
+            if (currentOrientation == Configuration.ORIENTATION_PORTRAIT)
+            {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+            else
+            {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        });
+
         Button equalsButton = findViewById(R.id.button_result);
         equalsButton.setOnClickListener(v ->
         {
@@ -103,7 +144,7 @@ public class MainActivity extends AppCompatActivity
             }
             catch (Exception e)
             {
-                Toast.makeText(this, "Bruh, error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error in: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -145,31 +186,55 @@ public class MainActivity extends AppCompatActivity
 
     private List<String> to_string(String expression)
     {
-        Map<String, Integer> precedence = new HashMap<>();
+        Map<String, Integer> what_do_first = new HashMap<>();
 
-        precedence.put("+", 1);
-        precedence.put("-", 1);
-        precedence.put("*", 2);
-        precedence.put("÷", 2);
-        precedence.put("%", 3);
-        precedence.put("!", 4);
-        precedence.put("sin", 5);
-        precedence.put("cos", 5);
-        precedence.put("tan", 5);
-        precedence.put("ctg", 5);
-        precedence.put("sqrt", 5);
-        precedence.put("log", 5);
-        precedence.put("ln", 5);
+        what_do_first.put("+", 1);
+        what_do_first.put("-", 1);
+
+        what_do_first.put("*", 2);
+        what_do_first.put("÷", 2);
+
+        what_do_first.put("%", 3);
+
+        what_do_first.put("!", 4);
+
+        what_do_first.put("sin", 5);
+        what_do_first.put("cos", 5);
+        what_do_first.put("tan", 5);
+        what_do_first.put("ctg", 5);
+        what_do_first.put("⎷", 5);
+        what_do_first.put("log", 5);
+        what_do_first.put("ln", 5);
 
         List<String> output = new ArrayList<>();
         Deque<String> operators = new ArrayDeque<>();
         StringBuilder token = new StringBuilder();
+
+        int is_brackets_okay = 0;
 
         int i = 0;
         while (i < expression.length())
         {
             char c = expression.charAt(i);
 
+            if (c == '-' && (i == 0 || expression.charAt(i - 1) == '(' || "+-*/÷".indexOf(expression.charAt(i - 1)) != -1))
+            {
+                token.setLength(0);
+                token.append('-');
+                i++;
+
+                while (i < expression.length() &&
+                        (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.'))
+                {
+                    token.append(expression.charAt(i));
+                    i++;
+                }
+
+                output.add(token.toString());
+                continue;
+            }
+
+            // тут у нас числа обрабатываются
             if (Character.isDigit(c) || c == '.')
             {
                 token.setLength(0);
@@ -183,6 +248,7 @@ public class MainActivity extends AppCompatActivity
                 continue;
             }
 
+            // тут функции и константы
             if (Character.isLetter(c))
             {
                 token.setLength(0);
@@ -191,11 +257,29 @@ public class MainActivity extends AppCompatActivity
                     token.append(expression.charAt(i));
                     i++;
                 }
-                output.add(token.toString());
+
+                String func = token.toString();
+                if (what_do_first.containsKey(func))
+                {
+                    operators.push(func);
+                }
+                else if (func.equals("e"))
+                {
+                    output.add(String.valueOf(Math.E));
+                }
+                else if (func.equals("P"))
+                {
+                    output.add(String.valueOf(Math.PI));
+                }
+                else
+                {
+                    throw new IllegalArgumentException("not function and not const: " + func);
+                }
+
                 continue;
             }
 
-            if (c == 'π')
+            if (c == 'P')
             {
                 output.add(String.valueOf(Math.PI));
                 i++;
@@ -210,12 +294,19 @@ public class MainActivity extends AppCompatActivity
 
             if (c == '(')
             {
+                is_brackets_okay++;
                 operators.push("(");
                 i++;
                 continue;
             }
             if (c == ')')
             {
+                is_brackets_okay--;
+                if (is_brackets_okay < 0)
+                {
+                    throw new IllegalArgumentException("brackets is wrong!!!");
+                }
+
                 while (!operators.isEmpty() && !operators.peek().equals("("))
                 {
                     output.add(operators.pop());
@@ -236,9 +327,10 @@ public class MainActivity extends AppCompatActivity
             }
 
             String op = String.valueOf(c);
-            if (precedence.containsKey(op))
+            if (what_do_first.containsKey(op))
             {
-                while (!operators.isEmpty() && precedence.getOrDefault(operators.peek(), 0) >= precedence.get(op))
+                while (!operators.isEmpty() &&
+                        what_do_first.getOrDefault(operators.peek(), 0) >= what_do_first.get(op))
                 {
                     output.add(operators.pop());
                 }
@@ -247,13 +339,7 @@ public class MainActivity extends AppCompatActivity
                 continue;
             }
 
-            if (Character.isWhitespace(c))
-            {
-                i++;
-                continue;
-            }
-
-            throw new IllegalArgumentException("Unknown character: " + c);
+            throw new IllegalArgumentException("u put smth new: " + c);
         }
 
         while (!operators.isEmpty())
@@ -275,44 +361,73 @@ public class MainActivity extends AppCompatActivity
             {
                 stack.push(Double.parseDouble(token));
             }
-            else
+            else if (token.equals("sin") || token.equals("cos") || token.equals("tan") ||
+                    token.equals("ctg") || token.equals("⎷") || token.equals("log") ||
+                    token.equals("ln") || token.equals("!") )
             {
-                if (stack.size() < 2) throw new IllegalArgumentException("r u dumb");
+                if (stack.isEmpty())
+                {
+                    throw new IllegalArgumentException("u entered not enough numbers: " + token);
+                }
 
-                double b = stack.pop();
                 double a = stack.pop();
 
                 switch (token)
                 {
                     case "sin":
-                        stack.push(Math.sin(stack.pop()));
+                        stack.push(Math.sin(Math.toRadians(a)));
                         break;
                     case "cos":
-                        stack.push(Math.cos(stack.pop()));
+                        stack.push(Math.cos(Math.toRadians(a)));
                         break;
                     case "tan":
-                        stack.push(Math.tan(stack.pop()));
+                        stack.push(Math.tan(Math.toRadians(a)));
                         break;
                     case "ctg":
-                        stack.push(1.0 / Math.tan(stack.pop()));
+                        stack.push(1.0 / Math.tan(Math.toRadians(a)));
                         break;
-                    case "sqrt":
-                        stack.push(Math.sqrt(stack.pop()));
+                    case "⎷":
+                        stack.push(Math.sqrt(a));
                         break;
                     case "log":
-                        stack.push(Math.log10(stack.pop()));
+                        stack.push(Math.log10(a));
                         break;
                     case "ln":
-                        stack.push(Math.log(stack.pop()));
-                        break;
-                    case "𝛑":
-                        stack.push(Math.PI);
-                        break;
-                    case "e":
-                        stack.push(Math.E);
+                        stack.push(Math.log(a));
                         break;
                     case "!":
-                        stack.push(fact(stack.pop()));
+                        stack.push(fact(a));
+                        break;
+                }
+            }
+            else
+            {
+                if (stack.size() < 2)
+                {
+                    throw new IllegalArgumentException("u entered not enough numbers: " + token);
+                }
+
+                double b = stack.pop(); // lifo
+                double a = stack.pop();
+
+                switch (token)
+                {
+                    case "+":
+                        stack.push(a + b);
+                        break;
+                    case "-":
+                        stack.push(a - b);
+                        break;
+                    case "*":
+                        stack.push(a * b);
+                        break;
+                    case "÷":
+                        if (b == 0)
+                        {
+                            Toast.makeText(this, "division by zero", Toast.LENGTH_SHORT).show();
+                            return 0;
+                        }
+                        stack.push(a / b);
                         break;
                     case "%":
                         if (b == 0)
@@ -322,23 +437,18 @@ public class MainActivity extends AppCompatActivity
                         }
                         stack.push(a % b);
                         break;
-                    case "+": stack.push(a + b); break;
-                    case "-": stack.push(a - b); break;
-                    case "*": stack.push(a * b); break;
-                    case "÷":
-                        if (b == 0)
-                        {
-                            Toast.makeText(this, "Division by zero", Toast.LENGTH_SHORT).show();
-                            return 0;
-                        }
-                        stack.push(a / b);
-                        break;
                 }
             }
         }
 
+        if (stack.size() != 1)
+        {
+            throw new IllegalStateException("invalid expression");
+        }
+
         return stack.pop();
     }
+
 
     private double fact(double x)
     {

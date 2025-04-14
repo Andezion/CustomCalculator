@@ -17,10 +17,11 @@
         android:layout_height="219dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.5"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="81dp">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_8"
@@ -569,8 +570,8 @@
 
             android:background="@drawable/cool_button1"
 
-            android:text="𝛑"
-            android:textSize="25sp"
+            android:text="P"
+            android:textSize="15sp"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_ctg"
