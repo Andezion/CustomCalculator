@@ -219,9 +219,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_cos"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -237,9 +239,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_procent"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button"
 
@@ -253,11 +257,12 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
-
             android:id="@+id/button_tan"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -273,9 +278,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_ctg"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -290,9 +297,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_begin"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button"
 
@@ -308,9 +317,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_end"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button"
 
@@ -326,9 +337,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_4"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -344,9 +357,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_1"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -362,9 +377,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_to_float"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button"
 
@@ -379,9 +396,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_2"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -396,9 +415,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_0"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -413,9 +434,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_6"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -430,9 +453,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_3"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -447,9 +472,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_multiply"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button2"
 
@@ -464,9 +491,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_result"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button2"
 
@@ -481,9 +510,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_minus"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button2"
 
@@ -498,9 +529,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_plus"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button2"
 
@@ -515,9 +548,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_5"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -532,9 +567,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_sqrt"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -549,9 +586,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_e"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
@@ -567,9 +606,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_mode"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button"
 
@@ -584,9 +625,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_pi"
-            android:layout_width="0dp"
 
+            android:layout_width="0dp"
             android:layout_height="0dp"
+
+            android:layout_margin="10dp"
 
             android:background="@drawable/cool_button1"
 
