@@ -35,7 +35,7 @@
 
             app:layout_constraintBottom_toTopOf="@id/button_7"
             app:layout_constraintEnd_toStartOf="@id/button_znak"
-
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -52,7 +52,7 @@
 
             app:layout_constraintBottom_toTopOf="@id/button_8"
             app:layout_constraintEnd_toStartOf="@id/button_procent"
-
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/button_delete" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -159,7 +159,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_4"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
 
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
@@ -176,7 +176,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_5"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
 
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
@@ -193,7 +193,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_6"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
 
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
@@ -210,7 +210,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_minus"
-            android:layout_width="60dp"
+            android:layout_width="0dp"
 
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
