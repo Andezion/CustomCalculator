@@ -101,11 +101,49 @@ public class MainActivity extends AppCompatActivity
         Button delete_button = findViewById(R.id.button_delete);
         delete_button.setOnClickListener(v ->
         {
-            if(inputText.length() > 0)
+            if (inputText.length() == 0)
+                return;
+
+            String[] functions = {"sin", "cos", "tan", "ctg", "log", "ln"};
+            String[] constants = {"P", "e"};
+            String[] special = {"⎷"}; // символ корня
+
+            for (String func : functions)
             {
-                inputText.deleteCharAt(inputText.length() - 1);
-                update();
+                if (inputText.length() >= func.length() &&
+                        inputText.substring(inputText.length() - func.length()).equals(func))
+                {
+                    inputText.delete(inputText.length() - func.length(), inputText.length());
+                    update();
+                    return;
+                }
             }
+
+            for (String c : constants)
+            {
+                if (inputText.length() >= c.length() &&
+                        inputText.substring(inputText.length() - c.length()).equals(c))
+                {
+                    inputText.delete(inputText.length() - c.length(), inputText.length());
+                    update();
+                    return;
+                }
+            }
+
+            for (String s : special)
+            {
+                if (inputText.length() >= s.length() &&
+                        inputText.substring(inputText.length() - s.length()).equals(s))
+                {
+                    inputText.delete(inputText.length() - s.length(), inputText.length());
+                    update();
+                    return;
+                }
+            }
+
+            // иначе просто удаляем 1 символ
+            inputText.deleteCharAt(inputText.length() - 1);
+            update();
         });
 
         Button changer = findViewById(R.id.button_mode);
