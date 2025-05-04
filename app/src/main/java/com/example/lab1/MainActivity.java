@@ -16,6 +16,8 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -222,71 +224,231 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+//    private List<String> to_string(String expression)
+//    {
+//        Map<String, Integer> what_do_first = new HashMap<>();
+//
+//        what_do_first.put("+", 1);
+//        what_do_first.put("-", 1);
+//
+//        what_do_first.put("*", 2);
+//        what_do_first.put("÷", 2);
+//
+//        what_do_first.put("%", 3);
+//
+//        what_do_first.put("!", 4);
+//
+//        what_do_first.put("sin", 5);
+//        what_do_first.put("cos", 5);
+//        what_do_first.put("tan", 5);
+//        what_do_first.put("ctg", 5);
+//        what_do_first.put("⎷", 5);
+//        what_do_first.put("log", 5);
+//        what_do_first.put("ln", 5);
+//
+//        List<String> output = new ArrayList<>();
+//        Deque<String> operators = new ArrayDeque<>();
+//        StringBuilder token = new StringBuilder();
+//
+//        int is_brackets_okay = 0;
+//
+//        int i = 0;
+//        while (i < expression.length())
+//        {
+//            char c = expression.charAt(i);
+//
+//            if (c == '-' && (i == 0 || expression.charAt(i - 1) == '(' || "+-*/÷".indexOf(expression.charAt(i - 1)) != -1))
+//            {
+//                token.setLength(0);
+//                token.append('-');
+//                i++;
+//
+//                while (i < expression.length() &&
+//                        (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.'))
+//                {
+//                    token.append(expression.charAt(i));
+//                    i++;
+//                }
+//
+//                output.add(token.toString());
+//                continue;
+//            }
+//
+//            // тут у нас числа обрабатываются
+//            if (Character.isDigit(c) || c == '.')
+//            {
+//                token.setLength(0);
+//                while (i < expression.length() &&
+//                        (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.'))
+//                {
+//                    token.append(expression.charAt(i));
+//                    i++;
+//                }
+//                output.add(token.toString());
+//                continue;
+//            }
+//
+//            // тут функции и константы
+//            if (Character.isLetter(c))
+//            {
+//                token.setLength(0);
+//                while (i < expression.length() && Character.isLetter(expression.charAt(i)))
+//                {
+//                    token.append(expression.charAt(i));
+//                    i++;
+//                }
+//
+//                String func = token.toString();
+//                if (what_do_first.containsKey(func))
+//                {
+//                    operators.push(func);
+//                }
+//                else if (func.equals("e"))
+//                {
+//                    output.add(String.valueOf(Math.E));
+//                }
+//                else if (func.equals("P"))
+//                {
+//                    output.add(String.valueOf(Math.PI));
+//                }
+//                else
+//                {
+//                    throw new IllegalArgumentException("not function and not const: " + func);
+//                }
+//
+//                continue;
+//            }
+//
+//            if (c == 'P')
+//            {
+//                output.add(String.valueOf(Math.PI));
+//                i++;
+//                continue;
+//            }
+//            if (c == 'e')
+//            {
+//                output.add(String.valueOf(Math.E));
+//                i++;
+//                continue;
+//            }
+//
+//            if (c == '(')
+//            {
+//                is_brackets_okay++;
+//                operators.push("(");
+//                i++;
+//                continue;
+//            }
+//            if (c == ')')
+//            {
+//                is_brackets_okay--;
+//                if (is_brackets_okay < 0)
+//                {
+//                    throw new IllegalArgumentException("brackets is wrong!!!");
+//                }
+//
+//                while (!operators.isEmpty() && !operators.peek().equals("("))
+//                {
+//                    output.add(operators.pop());
+//                }
+//                if (!operators.isEmpty() && operators.peek().equals("("))
+//                {
+//                    operators.pop();
+//                }
+//                i++;
+//                continue;
+//            }
+//
+//            if (c == '!')
+//            {
+//                output.add("!");
+//                i++;
+//                continue;
+//            }
+//
+//            String op = String.valueOf(c);
+//            if (what_do_first.containsKey(op))
+//            {
+//                while (!operators.isEmpty() &&
+//                        what_do_first.getOrDefault(operators.peek(), 0) >= what_do_first.get(op))
+//                {
+//                    output.add(operators.pop());
+//                }
+//                operators.push(op);
+//                i++;
+//                continue;
+//            }
+//
+//            throw new IllegalArgumentException("u put smth new: " + c);
+//        }
+//
+//        while (!operators.isEmpty())
+//        {
+//            output.add(operators.pop());
+//        }
+//
+//        return output;
+//    }
+
     private List<String> to_string(String expression)
     {
-        Map<String, Integer> what_do_first = new HashMap<>();
-
-        what_do_first.put("+", 1);
-        what_do_first.put("-", 1);
-
-        what_do_first.put("*", 2);
-        what_do_first.put("÷", 2);
-
-        what_do_first.put("%", 3);
-
-        what_do_first.put("!", 4);
-
-        what_do_first.put("sin", 5);
-        what_do_first.put("cos", 5);
-        what_do_first.put("tan", 5);
-        what_do_first.put("ctg", 5);
-        what_do_first.put("⎷", 5);
-        what_do_first.put("log", 5);
-        what_do_first.put("ln", 5);
+        Map<String, Integer> precedence = new HashMap<>();
+        precedence.put("+", 1);
+        precedence.put("-", 1);
+        precedence.put("*", 2);
+        precedence.put("÷", 2);
+        precedence.put("%", 2);
+        precedence.put("!", 3);
+        precedence.put("sin", 4);
+        precedence.put("cos", 4);
+        precedence.put("tan", 4);
+        precedence.put("ctg", 4);
+        precedence.put("⎷", 4);
+        precedence.put("log", 4);
+        precedence.put("ln", 4);
+        precedence.put("u-", 5); // унарный минус если мы хотим -sin сделать
 
         List<String> output = new ArrayList<>();
         Deque<String> operators = new ArrayDeque<>();
-        StringBuilder token = new StringBuilder();
 
-        int is_brackets_okay = 0;
+        StringBuilder token = new StringBuilder();
+        int bracketsBalance = 0;
+        boolean expectUnary = true; // после ( или начала — ожидаем унарный минус
 
         int i = 0;
         while (i < expression.length())
         {
             char c = expression.charAt(i);
 
-            if (c == '-' && (i == 0 || expression.charAt(i - 1) == '(' || "+-*/÷".indexOf(expression.charAt(i - 1)) != -1))
-            {
-                token.setLength(0);
-                token.append('-');
+            // Пропуск пробелов
+            if (Character.isWhitespace(c)) {
                 i++;
-
-                while (i < expression.length() &&
-                        (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.'))
-                {
-                    token.append(expression.charAt(i));
-                    i++;
-                }
-
-                output.add(token.toString());
                 continue;
             }
 
-            // тут у нас числа обрабатываются
+            // Унарный минус
+            if (c == '-' && expectUnary)
+            {
+                operators.push("u-");
+                i++;
+                continue;
+            }
+
+            // Число
             if (Character.isDigit(c) || c == '.')
             {
                 token.setLength(0);
-                while (i < expression.length() &&
-                        (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.'))
+                while (i < expression.length() && (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.'))
                 {
                     token.append(expression.charAt(i));
                     i++;
                 }
                 output.add(token.toString());
+                expectUnary = false;
                 continue;
             }
 
-            // тут функции и константы
+            // Буквы (функции и константы)
             if (Character.isLetter(c))
             {
                 token.setLength(0);
@@ -296,196 +458,392 @@ public class MainActivity extends AppCompatActivity
                     i++;
                 }
 
-                String func = token.toString();
-                if (what_do_first.containsKey(func))
-                {
-                    operators.push(func);
-                }
-                else if (func.equals("e"))
+                String word = token.toString();
+                if (word.equals("e"))
                 {
                     output.add(String.valueOf(Math.E));
+                    expectUnary = false;
                 }
-                else if (func.equals("P"))
+                else if (word.equals("P"))
                 {
                     output.add(String.valueOf(Math.PI));
+                    expectUnary = false;
+                }
+                else if (precedence.containsKey(word))
+                {
+                    operators.push(word);
+                    expectUnary = true;
                 }
                 else
                 {
-                    throw new IllegalArgumentException("not function and not const: " + func);
+                    throw new IllegalArgumentException("Incorrect word: " + word);
                 }
-
                 continue;
             }
 
-            if (c == 'P')
-            {
-                output.add(String.valueOf(Math.PI));
-                i++;
-                continue;
-            }
-            if (c == 'e')
-            {
-                output.add(String.valueOf(Math.E));
-                i++;
-                continue;
-            }
-
+            // Скобки
             if (c == '(')
             {
-                is_brackets_okay++;
+                bracketsBalance++;
+                if (!output.isEmpty())
+                {
+                    // Неявное умножение, например: 2(3+4) или π(2)
+                    String last = output.get(output.size() - 1);
+                    if (last.matches("\\d+(\\.\\d+)?") || last.equals(String.valueOf(Math.PI)) || last.equals(String.valueOf(Math.E)))
+                    {
+                        while (!operators.isEmpty() && precedence.getOrDefault(operators.peek(), 0) >= precedence.get("*"))
+                        {
+                            output.add(operators.pop());
+                        }
+                        operators.push("*");
+                    }
+                }
+
                 operators.push("(");
                 i++;
+                expectUnary = true;
                 continue;
             }
             if (c == ')')
             {
-                is_brackets_okay--;
-                if (is_brackets_okay < 0)
+                bracketsBalance--;
+                if (bracketsBalance < 0)
                 {
-                    throw new IllegalArgumentException("brackets is wrong!!!");
+                    throw new IllegalArgumentException("Incorrect brackets");
                 }
 
                 while (!operators.isEmpty() && !operators.peek().equals("("))
                 {
                     output.add(operators.pop());
                 }
-                if (!operators.isEmpty() && operators.peek().equals("("))
+
+                if (operators.isEmpty())
                 {
-                    operators.pop();
+                    throw new IllegalArgumentException("Too much brackets");
                 }
+
+                operators.pop(); // убираем '('
                 i++;
+                expectUnary = false;
                 continue;
             }
 
+            // Факториал
             if (c == '!')
             {
                 output.add("!");
                 i++;
+                expectUnary = false;
                 continue;
             }
 
+            // Операторы
             String op = String.valueOf(c);
-            if (what_do_first.containsKey(op))
+            if (precedence.containsKey(op))
             {
+                if (expectUnary)
+                {
+                    throw new IllegalArgumentException("You entered two operators");
+                }
+
                 while (!operators.isEmpty() &&
-                        what_do_first.getOrDefault(operators.peek(), 0) >= what_do_first.get(op))
+                        precedence.getOrDefault(operators.peek(), 0) >= precedence.get(op))
                 {
                     output.add(operators.pop());
                 }
                 operators.push(op);
                 i++;
+                expectUnary = true;
                 continue;
             }
 
-            throw new IllegalArgumentException("u put smth new: " + c);
+            throw new IllegalArgumentException("Incorrect char: " + c);
+        }
+
+        if (bracketsBalance != 0)
+        {
+            throw new IllegalArgumentException("Brackets error");
         }
 
         while (!operators.isEmpty())
         {
-            output.add(operators.pop());
+            String op = operators.pop();
+            if (op.equals("(") || op.equals(")"))
+            {
+                throw new IllegalArgumentException("Dude..brackets");
+            }
+            output.add(op);
         }
 
         return output;
     }
 
+    public double do_math(String expr) {
+        expr = expr.replace(" ", "")
+                .replace("π", "P")
+                .replace("e", "E");
 
-    private double do_math(List<String> postfix)
-    {
-        Deque<Double> stack = new ArrayDeque<>();
+        Stack<String> output = new Stack<>();
+        Stack<String> operators = new Stack<>();
 
-        for (String token : postfix)
-        {
-            if (token.matches("-?\\d+(\\.\\d+)?"))
-            {
-                stack.push(Double.parseDouble(token));
+        Map<String, Integer> precedence = Map.of(
+                "+", 1,
+                "-", 1,
+                "*", 2,
+                "/", 2,
+                "!", 4
+        );
+
+        Set<String> functions = Set.of("sin", "cos", "tan", "ctg", "log", "ln", "⎷");
+        int i = 0;
+        boolean expectUnary = true;
+
+        while (i < expr.length()) {
+            char c = expr.charAt(i);
+
+            if (Character.isDigit(c) || c == '.') {
+                StringBuilder number = new StringBuilder();
+                while (i < expr.length() && (Character.isDigit(expr.charAt(i)) || expr.charAt(i) == '.')) {
+                    number.append(expr.charAt(i));
+                    i++;
+                }
+                output.add(number.toString());
+                expectUnary = false;
+                continue;
             }
-            else if (token.equals("sin") || token.equals("cos") || token.equals("tan") ||
-                    token.equals("ctg") || token.equals("⎷") || token.equals("log") ||
-                    token.equals("ln") || token.equals("!") )
-            {
-                if (stack.isEmpty())
-                {
-                    throw new IllegalArgumentException("u entered not enough numbers: " + token);
+
+            if (c == 'P') {
+                output.add(String.valueOf(Math.PI));
+                i++;
+                expectUnary = false;
+                continue;
+            }
+
+            if (c == 'E') {
+                output.add(String.valueOf(Math.E));
+                i++;
+                expectUnary = false;
+                continue;
+            }
+
+            if (Character.isLetter(c)) {
+                StringBuilder func = new StringBuilder();
+                while (i < expr.length() && Character.isLetter(expr.charAt(i))) {
+                    func.append(expr.charAt(i));
+                    i++;
+                }
+                if (!functions.contains(func.toString())) {
+                    throw new IllegalArgumentException("Unknown function: " + func);
+                }
+                operators.push(func.toString());
+                expectUnary = true;
+                continue;
+            }
+
+            if (c == '(') {
+                operators.push("(");
+                i++;
+                expectUnary = true;
+                continue;
+            }
+
+            if (c == ')') {
+                while (!operators.isEmpty() && !operators.peek().equals("(")) {
+                    output.add(operators.pop());
+                }
+                if (operators.isEmpty()) {
+                    throw new IllegalArgumentException("Mismatched parentheses");
+                }
+                operators.pop(); // remove "("
+                if (!operators.isEmpty() && functions.contains(operators.peek())) {
+                    output.add(operators.pop());
+                }
+                i++;
+                expectUnary = false;
+                continue;
+            }
+
+            if (c == '-' && expectUnary) {
+                // Унарный минус = (0 - x)
+                output.add("0");
+            }
+
+            String op = String.valueOf(c);
+            if (precedence.containsKey(op)) {
+                if (expectUnary && !op.equals("-") && !op.equals("+")) {
+                    throw new IllegalArgumentException("Unexpected operator: " + op);
                 }
 
-                double a = stack.pop();
+                while (!operators.isEmpty() &&
+                        precedence.getOrDefault(operators.peek(), 0) >= precedence.get(op)) {
+                    output.add(operators.pop());
+                }
+                operators.push(op);
+                i++;
+                expectUnary = true;
+                continue;
+            }
 
-                switch (token)
-                {
-                    case "sin":
-                        stack.push(Math.sin(Math.toRadians(a)));
-                        break;
-                    case "cos":
-                        stack.push(Math.cos(Math.toRadians(a)));
-                        break;
-                    case "tan":
-                        stack.push(Math.tan(Math.toRadians(a)));
-                        break;
-                    case "ctg":
-                        stack.push(1.0 / Math.tan(Math.toRadians(a)));
-                        break;
+            throw new IllegalArgumentException("Invalid character: " + c);
+        }
+
+        while (!operators.isEmpty()) {
+            String op = operators.pop();
+            if (op.equals("(") || op.equals(")")) {
+                throw new IllegalArgumentException("Mismatched parentheses");
+            }
+            output.add(op);
+        }
+
+        // Evaluate RPN
+        Stack<Double> stack = new Stack<>();
+        for (String token : output) {
+            if (functions.contains(token)) {
+                if (stack.isEmpty()) throw new IllegalArgumentException("Too few arguments for function: " + token);
+                double val = stack.pop();
+                switch (token) {
+                    case "sin": stack.push(Math.sin(Math.toRadians(val))); break;
+                    case "cos": stack.push(Math.cos(Math.toRadians(val))); break;
+                    case "tan": stack.push(Math.tan(Math.toRadians(val))); break;
+                    case "ctg": stack.push(1.0 / Math.tan(Math.toRadians(val))); break;
+                    case "log": stack.push(Math.log10(val)); break;
+                    case "ln": stack.push(Math.log(val)); break;
                     case "⎷":
-                        stack.push(Math.sqrt(a));
-                        break;
-                    case "log":
-                        stack.push(Math.log10(a));
-                        break;
-                    case "ln":
-                        stack.push(Math.log(a));
-                        break;
-                    case "!":
-                        stack.push(fact(a));
+                        if (val < 0) throw new IllegalArgumentException("sqrt of negative number");
+                        stack.push(Math.sqrt(val));
                         break;
                 }
-            }
-            else
-            {
-                if (stack.size() < 2)
-                {
-                    throw new IllegalArgumentException("u entered not enough numbers: " + token);
+            } else if (precedence.containsKey(token)) {
+                if (token.equals("!")) {
+                    if (stack.isEmpty()) throw new IllegalArgumentException("Too few numbers for '!'");
+                    double val = stack.pop();
+                    if (val < 0 || val != Math.floor(val)) {
+                        throw new IllegalArgumentException("Factorial only defined for non-negative integers");
+                    }
+                    double fact = 1;
+                    for (int j = 2; j <= (int) val; j++) fact *= j;
+                    stack.push(fact);
+                } else {
+                    if (stack.size() < 2) throw new IllegalArgumentException("Too few numbers for '" + token + "'");
+                    double b = stack.pop();
+                    double a = stack.pop();
+                    switch (token) {
+                        case "+": stack.push(a + b); break;
+                        case "-": stack.push(a - b); break;
+                        case "*": stack.push(a * b); break;
+                        case "/": stack.push(a / b); break;
+                    }
                 }
-
-                double b = stack.pop(); // lifo
-                double a = stack.pop();
-
-                switch (token)
-                {
-                    case "+":
-                        stack.push(a + b);
-                        break;
-                    case "-":
-                        stack.push(a - b);
-                        break;
-                    case "*":
-                        stack.push(a * b);
-                        break;
-                    case "÷":
-                        if (b == 0)
-                        {
-                            Toast.makeText(this, "division by zero", Toast.LENGTH_SHORT).show();
-                            return 0;
-                        }
-                        stack.push(a / b);
-                        break;
-                    case "%":
-                        if (b == 0)
-                        {
-                            Toast.makeText(this, "% by zero", Toast.LENGTH_SHORT).show();
-                            return 0;
-                        }
-                        stack.push(a % b);
-                        break;
-                }
+            } else {
+                stack.push(Double.parseDouble(token));
             }
         }
 
-        if (stack.size() != 1)
-        {
-            throw new IllegalStateException("invalid expression");
+        if (stack.size() != 1) {
+            throw new IllegalArgumentException("Invalid expression. Stack: " + stack);
         }
 
         return stack.pop();
     }
+
+
+//    private double do_math(List<String> postfix)
+//    {
+//        Deque<Double> stack = new ArrayDeque<>();
+//
+//        for (String token : postfix)
+//        {
+//            if (token.matches("-?\\d+(\\.\\d+)?"))
+//            {
+//                stack.push(Double.parseDouble(token));
+//            }
+//            else if (token.equals("sin") || token.equals("cos") || token.equals("tan") ||
+//                    token.equals("ctg") || token.equals("⎷") || token.equals("log") ||
+//                    token.equals("ln") || token.equals("!") )
+//            {
+//                if (stack.isEmpty())
+//                {
+//                    throw new IllegalArgumentException("u entered not enough numbers: " + token);
+//                }
+//
+//                double a = stack.pop();
+//
+//                switch (token)
+//                {
+//                    case "sin":
+//                        stack.push(Math.sin(Math.toRadians(a)));
+//                        break;
+//                    case "cos":
+//                        stack.push(Math.cos(Math.toRadians(a)));
+//                        break;
+//                    case "tan":
+//                        stack.push(Math.tan(Math.toRadians(a)));
+//                        break;
+//                    case "ctg":
+//                        stack.push(1.0 / Math.tan(Math.toRadians(a)));
+//                        break;
+//                    case "⎷":
+//                        stack.push(Math.sqrt(a));
+//                        break;
+//                    case "log":
+//                        stack.push(Math.log10(a));
+//                        break;
+//                    case "ln":
+//                        stack.push(Math.log(a));
+//                        break;
+//                    case "!":
+//                        stack.push(fact(a));
+//                        break;
+//                }
+//            }
+//            else
+//            {
+//                if (stack.size() < 2)
+//                {
+//                    throw new IllegalArgumentException("u entered not enough numbers: " + token);
+//                }
+//
+//                double b = stack.pop(); // lifo
+//                double a = stack.pop();
+//
+//                switch (token)
+//                {
+//                    case "+":
+//                        stack.push(a + b);
+//                        break;
+//                    case "-":
+//                        stack.push(a - b);
+//                        break;
+//                    case "*":
+//                        stack.push(a * b);
+//                        break;
+//                    case "÷":
+//                        if (b == 0)
+//                        {
+//                            Toast.makeText(this, "division by zero", Toast.LENGTH_SHORT).show();
+//                            return 0;
+//                        }
+//                        stack.push(a / b);
+//                        break;
+//                    case "%":
+//                        if (b == 0)
+//                        {
+//                            Toast.makeText(this, "% by zero", Toast.LENGTH_SHORT).show();
+//                            return 0;
+//                        }
+//                        stack.push(a % b);
+//                        break;
+//                }
+//            }
+//        }
+//
+//        if (stack.size() != 1)
+//        {
+//            throw new IllegalStateException("invalid expression");
+//        }
+//
+//        return stack.pop();
+//    }
 
 
     private double fact(double x)
@@ -509,7 +867,8 @@ public class MainActivity extends AppCompatActivity
 
     private double trimmer(String primer)
     {
-        List<String> postfix = to_string(primer.replaceAll("\\s+", ""));
-        return do_math(postfix);
+//        List<String> postfix = to_string(primer.replaceAll("\\s+", ""));
+//        return do_math(postfix);
+        return do_math(primer.replaceAll("\\s+", ""));
     }
 }
